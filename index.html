@@ -18,16 +18,97 @@
   </header>
 
   <main class="wrap">
-    <details class="about-site">
-      <summary>About this site</summary>
+    <details class="about-site" open>
+      <summary>What this tool does</summary>
       <div class="about-site__body">
-        <p class="about-site__lead"><strong>The purpose of this site is not to let AI decide what intervention should be used. It is designed to help practitioners structure real-world questions, connect them with existing evidence, and develop interventions that are both feasible and testable.</strong></p>
+        <p class="about-site__lead"><strong>This website does not itself conduct AI searches, analyse police data, or make policing decisions.</strong></p>
         <ul class="about-site__list">
-          <li>This site creates prompts for using AI to support Evidence-Based Policing / Evidence-Based Practice (EBP) design.</li>
-          <li>By entering the problem and what is currently known, you can generate a prompt that asks your AI to review relevant EBP resources and academic evidence, compare previous interventions, and organise possible intervention options.</li>
-          <li>The intervention options proposed by AI should primarily draw on approaches that have already been examined in research or practice. The tool is not mainly intended to ask AI to invent entirely new interventions from scratch.</li>
-          <li>If you already have a new intervention idea, the prompt can help compare it with related interventions, relevant criminological or behavioural theory, and prior evaluation methods, and can help turn the idea into a testable hypothesis.</li>
+          <li>It is a prompt-building tool designed to help practitioners create a structured prompt that can be copied into an AI service that they are authorised by their organisation to use.</li>
+          <li>The generated prompt guides the AI through a staged Evidence-Based Policing process, including problem structuring, evidence searching, comparison of intervention options, outcome and measurement planning, and evaluation design.</li>
+          <li>The purpose is to support practitioner judgement — not to replace it.</li>
         </ul>
+      </div>
+    </details>
+
+    <details class="about-site">
+      <summary>Before using the generated prompt</summary>
+      <div class="about-site__body">
+        <p class="about-site__lead"><strong>Please use only AI services that are permitted under your organisation’s policies and approval requirements.</strong></p>
+        <p>Do not enter or upload:</p>
+        <ul class="about-site__list">
+          <li>personal or identifiable information;</li>
+          <li>active investigation information;</li>
+          <li>sensitive operational or investigative methods;</li>
+          <li>unpublished or non-public police information;</li>
+          <li>confidential material; or</li>
+          <li>any other information that your organisation does not permit to be shared with an external AI service.</li>
+        </ul>
+        <p>If such information is relevant to the problem, anonymise, generalise, or remove it before using the generated prompt.</p>
+        <p><strong>Organisational information-governance, security, legal, ethical, and research requirements always take priority over this tool.</strong></p>
+      </div>
+    </details>
+
+    <details class="about-site">
+      <summary>Copyright and use of external sources</summary>
+      <div class="about-site__body">
+        <p>The generated prompt is designed to use external EBP websites, academic publications, toolkits and guidance primarily for evidence searching, verification, summarisation and linking to original sources.</p>
+        <p>It instructs the AI not to reproduce, translate, adapt or republish substantial protected content, figures, tables, diagrams, toolkit material or guidance text unless the relevant licence or explicit permission allows it.</p>
+        <p>Public availability does not necessarily mean that material may be freely copied, translated, adapted or redistributed.</p>
+        <p>Where reuse conditions are unclear, the preferred approach is to summarise the relevant findings in original wording and provide a link to the original source.</p>
+        <p><strong>Users should also avoid uploading or pasting substantial third-party copyrighted material into a public AI service unless authorised to do so under the applicable licence, permission, or organisational policy.</strong></p>
+      </div>
+    </details>
+
+    <details class="about-site">
+      <summary>Use of external EBP resources</summary>
+      <div class="about-site__body">
+        <p>Resources such as the College of Policing Crime Reduction Toolkit, Campbell Collaboration, POP Center and Evidence-Based Policing Matrix are used primarily as evidence and navigation sources.</p>
+        <p>Where possible, the generated prompt directs the AI to trace findings back to the original study, review, official publication, publisher page or other formal source.</p>
+        <p>This website does not claim ownership of, or official affiliation with, these external resources.</p>
+        <p>Where translation, adaptation or republication rights are unclear, users should rely on summaries and links to the original source unless permission has been obtained.</p>
+      </div>
+    </details>
+
+    <details class="about-site">
+      <summary>Check the evidence</summary>
+      <div class="about-site__body">
+        <p>AI-generated summaries and recommendations may contain errors, omissions or incorrect interpretations.</p>
+        <p>Before using any evidence in operational planning, research, evaluation or decision-making:</p>
+        <ul class="about-site__list">
+          <li>check the original source;</li>
+          <li>confirm that the cited study or document exists;</li>
+          <li>verify important findings, statistics, URLs and DOIs;</li>
+          <li>distinguish established evidence from hypotheses or provisional interpretations; and</li>
+          <li>consider whether the evidence is transferable to the local context.</li>
+        </ul>
+        <p><strong>The practitioner and their organisation remain responsible for the final decision.</strong></p>
+      </div>
+    </details>
+
+    <details class="about-site">
+      <summary>Before implementing an intervention or evaluation</summary>
+      <div class="about-site__body">
+        <p><strong>A suggested evaluation design is not, by itself, approval to implement it.</strong></p>
+        <p>Depending on the intervention and evaluation design, organisational approval, ethics review, privacy assessment, legal advice, information-governance review, consultation with a research partner, or other local approval may be required.</p>
+        <p>This is particularly important where an evaluation involves:</p>
+        <ul class="about-site__list">
+          <li>randomisation or differential treatment;</li>
+          <li>personal or identifiable data;</li>
+          <li>vulnerable populations;</li>
+          <li>sensitive police or administrative data;</li>
+          <li>surveillance;</li>
+          <li>experimental changes to operational practice; or</li>
+          <li>interventions that may affect rights, access, burden or risk.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="about-site">
+      <summary>Prototype status</summary>
+      <div class="about-site__body">
+        <p>This is an experimental prototype developed by Ichimizu-kai to explore how structured AI prompts might help practitioners engage with Evidence-Based Policing.</p>
+        <p>It is not an official police system, not a substitute for professional judgement, and not a substitute for organisational, legal, ethical, information-governance or research approval.</p>
+        <p>The tool will continue to be revised in response to practitioner, researcher and international feedback.</p>
       </div>
     </details>
 
@@ -101,6 +182,17 @@
           <textarea id="other" rows="3" placeholder="Example: Facility managers can cooperate. The intervention must be introduced at all sites at the same time."></textarea>
         </div>
 
+        <aside class="pre-generate-note" aria-label="Before generating your prompt">
+          <h3>Before generating your prompt</h3>
+          <ul>
+            <li>Use only an AI service approved or permitted by your organisation.</li>
+            <li>Do not enter personal, investigative, operationally sensitive, confidential or non-public information.</li>
+            <li>Do not upload copyrighted third-party material unless authorised.</li>
+            <li>Check AI-generated evidence against the original sources.</li>
+            <li>Final decisions remain with the practitioner and their organisation.</li>
+          </ul>
+        </aside>
+
         <div class="actions">
           <button id="reviewBtn" class="primary" type="submit">Review content</button>
           <button id="clearBtn" class="secondary" type="button">Clear form</button>
@@ -146,11 +238,24 @@
       <h2>What to do after copying the prompt</h2>
       <ol>
         <li>Select “Copy the generated prompt”.</li>
-        <li>Open the AI service you normally use, such as ChatGPT, Gemini, Claude, or Copilot.</li>
+        <li>Open an AI service that you are authorised by your organisation to use, such as ChatGPT, Gemini, Claude, or Copilot where permitted.</li>
         <li>Paste the prompt into a new chat and send it.</li>
         <li>Answer the AI’s follow-up questions and work through intervention options, measurement, and evaluation design.</li>
       </ol>
       <p class="muted">This webpage does not itself send your information to an AI service. Use only AI services permitted by your organisation and follow all applicable information-security rules.</p>
+    </section>
+    <section class="panel compact workflow-positioning">
+      <h2>How this tool fits into the decision process</h2>
+      <div class="workflow-chain">
+        <div><strong>Practitioner</strong><span>enters non-sensitive problem information</span></div>
+        <div class="arrow">↓</div>
+        <div><strong>Ichimizu EBP Design Support</strong><span>generates a structured prompt only</span></div>
+        <div class="arrow">↓</div>
+        <div><strong>Organisation-approved / permitted AI service</strong><span>supports problem structuring, evidence searching, intervention comparison and evaluation planning</span></div>
+        <div class="arrow">↓</div>
+        <div><strong>Practitioner / organisation</strong><span>checks original evidence, considers ethics, law, privacy and operational constraints, and makes the final decision</span></div>
+      </div>
+      <p class="final-message"><strong>The purpose of the website is not to automate policing decisions.</strong> Its purpose is to lower the practical barrier to Evidence-Based Policing by helping practitioners ask better questions of AI, search for relevant evidence more systematically, and develop evaluation plans that can then be reviewed by practitioners, researchers and their organisations.</p>
     </section>
   </main>
 

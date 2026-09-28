@@ -7,7 +7,7 @@ GitHub Pages-ready static site.
 - `index.html` — English user interface
 - `styles.css` — site styling
 - `app.js` — browser-only review, safety scan, and clipboard logic
-- `prompt-template.js` — English master prompt (`v0.3.1-en-candidate`)
+- `prompt-template.js` — English master prompt (`v0.3.3-en-candidate`)
 - `resource-links.js` — registered Ichimizu resource URLs
 - `README.md` — deployment notes
 
@@ -53,3 +53,20 @@ The two registered Ichimizu URLs currently point to the existing Japanese-langua
 The site is static and does not itself transmit the form contents to an AI service. The prompt is generated in the browser and copied to the clipboard.
 
 The built-in scan is only a rule-based aid. It cannot guarantee detection of all personal, operationally sensitive, non-public, or confidential information.
+
+
+## Site-content governance revision — 2026-09-28
+
+This revision makes the English site positioning explicit:
+
+- the site generates a structured prompt only;
+- it does not itself perform AI searching, police-data analysis, or operational decision-making;
+- users must use only AI services permitted by their organisation;
+- sensitive, investigative, confidential, and non-public information must not be entered;
+- copyright and licence restrictions apply to third-party material;
+- external EBP resources are navigation/evidence sources, not affiliated content;
+- AI-generated claims must be checked against original sources;
+- intervention/evaluation suggestions do not constitute organisational, legal, ethical, privacy, or research approval;
+- the site is an experimental Ichimizu-kai prototype.
+
+A short governance checklist is displayed immediately before the prompt-generation action.
