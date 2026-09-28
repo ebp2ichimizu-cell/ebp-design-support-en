@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1624">
+  <title>Ichimizu | EBP Design Support</title>
+  <meta name="description" content="A prompt-building tool that helps practitioners structure practical problems and work with AI on evidence-informed intervention and evaluation design.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <p class="eyebrow">ICHIMIZU</p>
+      <h1>EBP Design Support</h1>
+      <p class="lead">Enter what you know. The site generates a structured prompt that you can paste into your usual AI to work through problem analysis, intervention options, measurement, and evaluation design.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <details class="about-site">
+      <summary>About this site</summary>
+      <div class="about-site__body">
+        <p class="about-site__lead"><strong>The purpose of this site is not to let AI decide what intervention should be used. It is designed to help practitioners structure real-world questions, connect them with existing evidence, and develop interventions that are both feasible and testable.</strong></p>
+        <ul class="about-site__list">
+          <li>This site creates prompts for using AI to support Evidence-Based Policing / Evidence-Based Practice (EBP) design.</li>
+          <li>By entering the problem and what is currently known, you can generate a prompt that asks your AI to review relevant EBP resources and academic evidence, compare previous interventions, and organise possible intervention options.</li>
+          <li>The intervention options proposed by AI should primarily draw on approaches that have already been examined in research or practice. The tool is not mainly intended to ask AI to invent entirely new interventions from scratch.</li>
+          <li>If you already have a new intervention idea, the prompt can help compare it with related interventions, relevant criminological or behavioural theory, and prior evaluation methods, and can help turn the idea into a testable hypothesis.</li>
+        </ul>
+      </div>
+    </details>
+
+    <section class="notice danger" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">Read this before entering any information</h2>
+      <p><strong>Do not enter personal data, identifiable case details, active investigation information, sensitive operational methods, unpublished internal information, or confidential material.</strong></p>
+      <p>Where necessary, anonymise or generalise details using labels such as “Area A”, “Facility A”, or “Target Group A”. This page does not send your entries to an external server; the prompt is generated locally in your browser.</p>
+    </section>
+
+    <section id="formView" class="panel">
+      <div class="section-head">
+        <div>
+          <p class="step">STEP 1</p>
+          <h2>Enter what you know</h2>
+        </div>
+        <p class="muted">You do not need to complete every field. After you paste the prompt into your AI, it will ask for any additional information that would materially improve the analysis.</p>
+      </div>
+
+      <form id="ebpForm" novalidate>
+        <div class="field required">
+          <label for="issue">Practical problem / issue <span>Required</span></label>
+          <p class="help">What problem are you trying to address?</p>
+          <textarea id="issue" rows="4" required placeholder="Example: Bicycle theft is concentrated around the station, and we do not know whether the current prevention campaign is changing locking behaviour."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="target">Target population / setting</label>
+          <p class="help">Enter the relevant area, facility, population, or setting at an appropriate level of detail. Do not enter a precise street address.</p>
+          <textarea id="target" rows="3" placeholder="Example: City A, around Station B, bicycle parking facility C, a school district, shopping area, or a defined user group"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="known">What is currently known</label>
+          <p class="help">Enter confirmed facts such as patterns, trends, observations, or available baseline information.</p>
+          <textarea id="known" rows="4" placeholder="Example: Theft is concentrated in one parking facility. Many stolen bicycles were unlocked. Monthly incident counts are available for the past three years."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="currentMeasures">Current measures</label>
+          <p class="help">Leave blank if no intervention is currently in place.</p>
+          <textarea id="currentMeasures" rows="3" placeholder="Example: Posters, patrols, distribution of cable locks"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="ideas">Measures being considered</label>
+          <p class="help">Leave blank if you do not yet have an idea. The AI can compare several options.</p>
+          <textarea id="ideas" rows="3" placeholder="Example: Promote double locking, redesign the parking environment, targeted messaging"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="outcome">Intended outcomes</label>
+          <p class="help">A final outcome is enough. The AI can help identify relevant intermediate outcomes.</p>
+          <textarea id="outcome" rows="3" placeholder="Example: Reduce bicycle theft, increase double-locking, increase protective behaviour among users"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="data">Available data</label>
+          <p class="help">Enter data that already exist or that could realistically be collected.</p>
+          <textarea id="data" rows="3" placeholder="Example: Monthly incident counts, number of parked bicycles, structured observations of locking behaviour, survey results"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="constraints">Staffing, time, budget, and other constraints</label>
+          <p class="help">These conditions help keep the intervention and evaluation realistic.</p>
+          <textarea id="constraints" rows="3" placeholder="Example: Two staff members, approximately three months, little or no new budget"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="other">Other operational context</label>
+          <p class="help">Include relevant partnerships, implementation restrictions, sequencing requirements, or other field conditions.</p>
+          <textarea id="other" rows="3" placeholder="Example: Facility managers can cooperate. The intervention must be introduced at all sites at the same time."></textarea>
+        </div>
+
+        <div class="actions">
+          <button id="reviewBtn" class="primary" type="submit">Review content</button>
+          <button id="clearBtn" class="secondary" type="button">Clear form</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="reviewView" class="panel hidden" aria-live="polite">
+      <div class="section-head">
+        <div>
+          <p class="step">STEP 2</p>
+          <h2>Review your content and safety check</h2>
+        </div>
+        <p class="muted">The browser runs a simple rule-based scan. It cannot detect every sensitive detail, so you must also review the content yourself.</p>
+      </div>
+
+      <div id="scanSummary" class="scan-summary"></div>
+      <div id="reviewFields" class="review-fields"></div>
+
+      <div id="highRiskBlock" class="notice danger hidden">
+        <h3>Changes are required</h3>
+        <p>The scan found content that looks like direct personal information. Remove or anonymise it before continuing.</p>
+      </div>
+
+      <div id="warningBlock" class="notice warning hidden">
+        <h3>Please check carefully</h3>
+        <p>The scan found terms that may indicate operationally sensitive, investigative, non-public, or confidential information. Confirm that no such information is included before continuing.</p>
+        <label class="confirm-check">
+          <input id="warningAck" type="checkbox">
+          <span>I confirm that the text does not contain personal data, identifiable case or investigation information, unpublished information, or other sensitive material.</span>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="backBtn" class="secondary" type="button">Back to form</button>
+        <button id="copyBtn" class="primary" type="button">Copy the generated prompt</button>
+      </div>
+
+      <p id="copyStatus" class="copy-status" role="status"></p>
+    </section>
+
+    <section class="panel compact">
+      <h2>What to do after copying the prompt</h2>
+      <ol>
+        <li>Select “Copy the generated prompt”.</li>
+        <li>Open the AI service you normally use, such as ChatGPT, Gemini, Claude, or Copilot.</li>
+        <li>Paste the prompt into a new chat and send it.</li>
+        <li>Answer the AI’s follow-up questions and work through intervention options, measurement, and evaluation design.</li>
+      </ol>
+      <p class="muted">This webpage does not itself send your information to an AI service. Use only AI services permitted by your organisation and follow all applicable information-security rules.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Ichimizu | EBP Design Support</p>
+      <p class="muted">This tool supports problem structuring, evidence review, intervention design, and evaluation planning. It does not replace professional judgement or organisational decision-making.</p>
+    </div>
+  </footer>
+
+  <script src="resource-links.js"></script>
+  <script src="prompt-template.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
